@@ -1,0 +1,44 @@
+<!-- singlePost?.title fixes the 'Can not read property of undefined' ERROR -->
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form #postForm="ngForm" (submit)="onSavePost(postForm)" *ngIf="!isLoading">
+
+    <!-- Title -->
+    <mat-form-field appearance="fill" class="example-full-width">
+
+      <mat-label>Title</mat-label>
+      <input
+        #title="ngModel"
+        [ngModel]="singlePost?.title"
+        matInput
+        minlength="4"
+        name="title"
+        required
+        type="text">
+      <mat-error *ngIf="!title.valid && title.touched ">Enter a Title,4 chars or more!</mat-error>
+
+    </mat-form-field>
+
+    <!-- Content -->
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Content</mat-label>
+      <textarea
+        #content="ngModel"
+        [ngModel]="singlePost?.content"
+        matInput
+        minlength="4"
+        name="content"
+        required>
+      </textarea>
+      <mat-error *ngIf="!content.valid && content.touched ">Enter a Content more than 4 chars!</mat-error>
+    </mat-form-field>
+
+    <!-- Save Button-->
+    <button
+      color="primary"
+      mat-raised-button
+      type="submit">Save Post
+    </button>
+
+  </form>
+</mat-card>
