@@ -43,8 +43,8 @@
       </div>
       <!--Attach Button-->
       <div class="el2">
-        <button color="accent" mat-stroked-button>Insert Img</button>
-        <input type="file" name="" id="">
+        <button color="accent" (click)="filePicker.click()" mat-stroked-button>Insert Img</button>
+        <input type="file" #filePicker>
       </div>
     </div>
   </form>
