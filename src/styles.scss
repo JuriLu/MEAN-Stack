@@ -2,3 +2,29 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//Container Row Col
+
+:root {
+  --ele1: 11;   //Enter a value
+  --ele2: 0;    //Enter a value
+  --ele3: 0;    //Enter a value
+  --ele4: 0;    //Enter a value
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.el1 {
+  grid-column: span var(--ele1);  //space between el1 to el2
+}
+.el2 {
+  grid-column: span var(--ele2); //space between el2 to el3
+}
+.el3 {
+  grid-column: span var(--ele3); //space between el3 to el4
+}
+.el4 {
+  grid-column: span var(--ele4); ////space between el4 to el...
+}
+//Container Row Col
