@@ -2,34 +2,30 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
 
-  <form #postForm="ngForm" (submit)="onSavePost(postForm)" *ngIf="!isLoading">
+  <form [formGroup]="form"  (submit)="onSavePost()" *ngIf="!isLoading">
     <!-- Title -->
     <mat-form-field appearance="fill" class="example-full-width">
-
       <mat-label>Title</mat-label>
       <input
-        #title="ngModel"
-        [ngModel]="singlePost?.title"
         matInput
-        minlength="4"
         name="title"
-        required
-        type="text">
-      <mat-error *ngIf="!title.valid && title.touched ">Enter a Title,4 chars or more!</mat-error>
+        type="text"
+        formControlName="title"
+      >
+      <mat-error *ngIf="!form.get('title').valid && form.get('title').touched ">Enter a Title,4 chars or more!</mat-error>
 
     </mat-form-field>
     <!-- Content -->
     <mat-form-field appearance="fill" class="example-full-width">
       <mat-label>Content</mat-label>
       <textarea
-        #content="ngModel"
-        [ngModel]="singlePost?.content"
         matInput
         minlength="4"
         name="content"
-        required>
+        formControlName="content"
+      >
       </textarea>
-      <mat-error *ngIf="!content.valid && content.touched ">Enter a Content more than 4 chars!</mat-error>
+      <mat-error *ngIf="!form.get('content').valid && form.get('content').touched ">Enter a Content more than 4 chars!</mat-error>
     </mat-form-field>
 
     <div class="container">
@@ -43,9 +39,10 @@
       </div>
       <!--Attach Button-->
       <div class="el2">
-        <button color="accent" (click)="filePicker.click()" mat-stroked-button>Insert Img</button>
+        <button (click)="filePicker.click()" color="accent" mat-stroked-button>Insert Img</button>
       </div>
     </div>
+
   </form>
 </mat-card>
-<input type="file" #filePicker>
+<input #filePicker type="file">
